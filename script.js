@@ -9,11 +9,10 @@ async function checkWeather(city){
         try{
         const response=await fetch(apiUrl + `${city}&appid=${apiKey}`);
         const data = await response.json();
-        console.log(data);
         document.querySelector('.city').innerText = data.name;
         document.querySelector('.temp').innerText =Math.round(data.main.temp) +"°C";
         document.querySelector('.humidity').innerText = data.main.humidity +"%";
-        document.querySelector('.wind').innerText = data.wind.speedv +"m/s";
+        document.querySelector('.wind').innerText = data.wind.speed +"m/s";
         
         const weatherType = data.weather[0].main;
         document.querySelector('.weather-icon').src = `./images/${weatherType}.png`;
